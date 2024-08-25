@@ -1,0 +1,16 @@
+Flask
+Flask-SQLAlchemy
+Flask-JWT-Extended
+Flask-Migrate
+psycopg2-binary
+gunicorn
+Jinja2
+Werkzeug
+itsdangerous
+click
+MarkupSafe
+Stripe
+Twilio
+requests
+python-dotenv
+SQLAlchemy

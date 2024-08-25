@@ -1,0 +1,19 @@
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    header {
+        text-align: center;
+    }
+
+    header nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    main {
+        margin: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

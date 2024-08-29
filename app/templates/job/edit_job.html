@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Job{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Edit Job</h2>
+                    <form method="POST" action="{{ url_for('job.update_job', job_id=job.id) }}">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Job Title</label>
+                            <input type="text" class="form-control" name="title" id="title" value="{{ job.title }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Job Description</label>
+                            <textarea class="form-control" name="description" id="description" rows="5" required>{{ job.description }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="budget" class="form-label">Budget</label>
+                            <input type="number" class="form-control" name="budget" id="budget" value="{{ job.budget }}" required>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('job.job_detail', job_id=job.id) }}" class="btn btn-secondary me-md-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Update Job</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

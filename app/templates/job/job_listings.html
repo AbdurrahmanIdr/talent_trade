@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Listings{% endblock %}
+
+{% block content %}
+    <div class="card card-job-listings shadow-sm border-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title mb-0">Job Listings</h5>
+                <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left-circle"></i> Back to Dashboard
+                </a>
+            </div>
+
+            {% if jobs %}
+                <div class="list-group">
+                    {% for job in jobs %}
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-3">
+                                <h5 class="mb-1">
+                                    <a href="{{ url_for('job.job_detail', job_id=job.id) }}" class="text-decoration-none text-primary">
+                                        {{ job.title }}
+                                    </a>
+                                </h5>
+                                <p class="mb-1 text-muted">{{ job.description[:100] }}{% if job.description|length > 100 %}...{% endif %}</p>
+                                <p class="mb-1"><strong>Budget:</strong> ${{ job.budget }}</p>
+                                {% if current_user.role == 'client' %}
+                                    <a href="{{ url_for('job.view_applications', job_id=job.id) }}" class="btn btn-link p-0">Review Applications</a>
+                                    <a href="{{ url_for('application.view_shortlisted_applications', job_id=job.id) }}" class="btn btn-link p-0">View Shortlisted Applicants</a>
+                                {% endif %}
+                            </div>
+                            <span class="badge rounded-pill bg-secondary">{{ job.status }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    {% if current_user.role == 'freelancer' %}
+                        You haven't taken on any jobs yet.
+                    {% else %}
+                        You haven't posted any jobs yet.
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Manage Users, Jobs, and Applications from here.</p>
+<a href="{{ url_for('admin.manage_users') }}">Manage Users</a>
+<a href="{{ url_for('admin.manage_jobs') }}">Manage Jobs</a>
+{% endblock %}

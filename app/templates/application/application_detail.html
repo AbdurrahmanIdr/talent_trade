@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Application Details</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Freelancer Information</h5>
+                    <p class="card-text"><strong>Name:</strong> {{ application.freelancer.full_name }}</p>
+                    <p class="card-text"><strong>Email:</strong> <a href="mailto:{{ application.freelancer.email }}">{{ application.freelancer.email }}</a></p>
+                    <p class="card-text"><strong>Username:</strong> @{{ application.freelancer.username }}</p>
+                    <p class="card-text"><strong>Bio:</strong> {{ application.freelancer.bio }}</p>
+                    <p class="card-text"><strong>Status:</strong> {{ application.status }}</p>
+
+                    <hr>
+
+                    <h5 class="card-title">Job Information</h5>
+                    <p class="card-text"><strong>Job Title:</strong> {{ application.job.title }}</p>
+                    <p class="card-text"><strong>Posted by:</strong> {{ application.job.client.full_name }}</p>
+
+                    <hr>
+
+                    <h5 class="card-title">Cover Letter</h5>
+                    <p class="card-text">{{ application.cover_letter }}</p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('job.job_detail', job_id=application.job.id) }}" class="btn btn-secondary">View Job Details</a>
+                        {% if current_user.role == 'client' %}
+                        <a href="{{ url_for('job.update_status', application_id=application.id, status='accepted') }}" class="btn btn-success btn-sm me-2">Accept</a>
+                        <a href="{{ url_for('job.update_status', application_id=application.id,  status='rejected') }}" class="btn btn-danger btn-sm">Reject</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

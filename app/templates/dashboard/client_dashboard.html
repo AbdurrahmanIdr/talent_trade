@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block title %}
+  Client Dashboard - TalentTrade
+{% endblock %} {% block content %}
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse vh-100">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-3">
+            <a class="nav-link active fs-5" aria-current="page" href="{{ url_for('main.dashboard') }}"><i class="bi bi-house"></i> Dashboard</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link fs-5" href="{{ url_for('user.profile') }}"><i class="bi bi-file-person"></i> Profile</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link fs-5" href="{{ url_for('job.user_job_listings') }}"><i class="bi bi-briefcase"></i> Manage Jobs</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link fs-5" href="{{ url_for('message.inbox') }}"><i class="bi bi-chat"></i> Messages</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card card-profile text-dark h-100">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title">Profile</h3>
+              <p class="card-text flex-grow-1">View and edit your profile information.</p>
+              <a href="{{ url_for('user.profile') }}" class="btn btn-primary btn-sm mt-3 align-self-end">Go to Profile</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card card-job-listings text-dark h-100">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title">Job Listings</h3>
+              <p class="card-text flex-grow-1">Browse for available jobs.</p>
+              <a href="{{ url_for('job.job_listings') }}" class="btn btn-primary btn-sm mt-3 align-self-end">Go to Listings</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card card-job-listings text-dark h-100">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title">Manage Jobs</h3>
+              <p class="card-text flex-grow-1">View and manage your job listings.</p>
+              <a href="{{ url_for('job.user_job_listings') }}" class="btn btn-primary btn-sm mt-3 align-self-end">Go to Jobs</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card card-job-listings text-dark h-100">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title">Create Job</h3>
+              <p class="card-text flex-grow-1">Create a new Job.</p>
+              <a href="{{ url_for('job.create_job') }}" class="btn btn-primary btn-sm mt-3 align-self-end">Create a Job</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card card-messages text-dark h-100">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title">Messages</h3>
+              <p class="card-text flex-grow-1">Check your messages.</p>
+              <a href="{{ url_for('message.inbox') }}" class="btn btn-primary btn-sm mt-3 align-self-end">Go to Messages</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

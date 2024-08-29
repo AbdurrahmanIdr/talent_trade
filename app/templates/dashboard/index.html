@@ -1,126 +1,107 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to TalentTrade{% endblock %}
+{% block title %}
+  Welcome to TalentTrade
+{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero d-flex align-items-center"
-         style="height: 100vh;
-                 background: url('{{ url_for("static",
-                 filename="images/web_images/hero_image.webp") }}')
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" style="height: 100vh;
+                 background: url('{{ url_for('static', filename='images/web_images/hero_image.webp') }}')
                  no-repeat center center/cover;">
-    <div class="container text-center text-light bg-dark hero-div">
+      <div class="container text-center text-light bg-dark hero-div py-4">
         <h1 class="display-4 fw-bold">TalentTrade</h1>
         <p class="lead">Your one-stop platform for freelancers and clients to connect.</p>
         <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Join Us Today</a>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Features Section -->
-<section class="features py-5">
-    <div class="container">
+    <!-- Features Section -->
+    <section class="features py-5">
+      <div class="container">
         <h2 class="text-center mb-5">Our Features</h2>
         <div class="row g-4">
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static",
-                filename="images/web_images/secure_payment2.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Secure Transactions">
-                <h3>Secure Transactions</h3>
-                <p>We ensure that all transactions are secure and seamless.</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static", filename="images/web_images/real_time.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Real-Time Chat">
-                <h3>Real-Time Chat</h3>
-                <p>Communicate instantly with clients and freelancers.</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static", filename="images/web_images/job_listing.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Job Listings">
-                <h3>Job Listings</h3>
-                <p>Find the best job opportunities tailored for you.</p>
-            </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/secure_payment2.jpg') }}" class="img-fluid rounded mb-3" alt="Secure Transactions" />
+            <h3>Secure Transactions</h3>
+            <p>We ensure that all transactions are secure and seamless.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/real_time.jpg') }}" class="img-fluid rounded mb-3" alt="Real-Time Chat" />
+            <h3>Real-Time Chat</h3>
+            <p>Communicate instantly with clients and freelancers.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/job_listing.jpg') }}" class="img-fluid rounded mb-3" alt="Job Listings" />
+            <h3>Job Listings</h3>
+            <p>Find the best job opportunities tailored for you.</p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- How It Works Section -->
-<section class="how-it-works py-5 bg-light">
-    <div class="container">
+    <!-- How It Works Section -->
+    <section class="how-it-works py-5 bg-light">
+      <div class="container">
         <h2 class="text-center mb-5">How It Works</h2>
         <div class="row g-4">
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static", filename="images/web_images/sign_up.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Sign Up">
-                <h3>Step 1: Sign Up</h3>
-                <p>Create your account and complete your profile.</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static", filename="images/web_images/job_listing.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Browse Jobs">
-                <h3>Step 2: Browse Jobs</h3>
-                <p>Search for job listings that match your skills.</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <img src="{{ url_for("static", filename="images/web_images/apply_hired.jpg") }}"
-                     class="img-fluid rounded mb-3" alt="Apply & Get Hired">
-                <h3>Step 3: Apply & Get Hired</h3>
-                <p>Submit your application and start working.</p>
-            </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/sign_up.jpg') }}" class="img-fluid rounded mb-3" alt="Sign Up" />
+            <h3>Step 1: Sign Up</h3>
+            <p>Create your account and complete your profile.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/job_listing.jpg') }}" class="img-fluid rounded mb-3" alt="Browse Jobs" />
+            <h3>Step 2: Browse Jobs</h3>
+            <p>Search for job listings that match your skills.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/web_images/apply_hired.jpg') }}" class="img-fluid rounded mb-3" alt="Apply & Get Hired" />
+            <h3>Step 3: Apply & Get Hired</h3>
+            <p>Submit your application and start working.</p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Testimonials Section -->
-<section class="testimonials py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">What Our Users Say</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card p-4">
-                    <img src="{{ url_for("static", filename="images/web_images/testimonial.jpg") }}"
-                         class="img-fluid rounded-circle mb-3" alt="User 1">
-                    <blockquote class="blockquote">
-                        "TalentTrade helped me find the perfect freelancing job!"
-                    </blockquote>
-                    <p class="blockquote-footer">Jane Doe, Freelancer</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-4">
-                    <img src="{{ url_for("static",
-                    filename="images/web_images/testimonial.jpg") }}"
-                         class="img-fluid rounded-circle mb-3" alt="User 2">
-                    <blockquote class="blockquote">
-                        "A fantastic platform for hiring skilled professionals.
-                        "</blockquote>
-                    <p class="blockquote-footer">John Smith, Client</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="contact py-5">
+      <div class="container">
+        <h2 class="text-center mb-5">Contact Us</h2>
+        <form action="{{ url_for('main.submit') }}" method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message:</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
 
-<!-- Call-to-Action Section -->
-<section class="call-to-action py-5 bg-primary text-white text-center">
-    <div class="container">
+    <!-- Call-to-Action Section -->
+    <section class="call-to-action py-5 bg-primary text-white text-center">
+      <div class="container">
         <h2>Ready to Get Started?</h2>
         <p>Join TalentTrade and take your freelancing or hiring to the next level.</p>
-        <a href="{{ url_for('auth.register') }}"  class="btn btn-light btn-lg">Sign Up Now</a>
-    </div>
-</section>
-
+        <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">Sign Up Now</a>
+      </div>
+    </section>
+  </div>
 {% endblock %}
 
-<!-- Footer Section -->
 {% block footer %}
-<footer class="py-4 bg-dark text-white text-center">
-    <div class="container">
-        <p>© 2024 TalentTrade. All rights reserved.</p>
-        <div class="partner-logos d-flex justify-content-center">
-            <img src="https://example.com/partner1-logo.png" class="mx-2" alt="Partner 1" style="max-height: 40px;">
-            <img src="https://example.com/partner2-logo.png" class="mx-2" alt="Partner 2" style="max-height: 40px;">
-        </div>
+  <!-- Footer Section -->
+  <div class="bg-dark py-3">
+    <div class="container text-center text-white">
+      <p class="mb-0">&copy; 2024 TalentTrade. All rights reserved.</p>
     </div>
-</footer>
+  </div>
 {% endblock %}

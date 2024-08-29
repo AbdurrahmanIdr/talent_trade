@@ -3,10 +3,11 @@ from datetime import datetime
 from sqlalchemy import String, Integer, Text, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 from app.extensions import db
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -39,13 +40,28 @@ class User(db.Model):
     applications = relationship('Application', foreign_keys='Application.freelancer_id', back_populates='freelancer')
 
     messages_sent = relationship('Message', foreign_keys='Message.sender_id', back_populates='sender')
-    messages_received = relationship('Message', foreign_keys='Message.receiver_id', back_populates='recipient')
+    messages_received = relationship('Message', foreign_keys='Message.recipient_id', back_populates='recipient')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def get_id(self):
+        return str(self.id)
+
+    def is_active(self):
+        """Returns True, as all users are active by default."""
+        return True
+
+    def is_authenticated(self):
+        """Returns True if the user is authenticated."""
+        return True
+
+    def is_anonymous(self):
+        """Returns False, as anonymous users aren't supported."""
+        return False
 
     def __repr__(self) -> str:
         return f'<User {self.username}>'

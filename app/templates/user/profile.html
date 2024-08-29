@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.full_name }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <!-- Profile Header -->
+            <div class="card card-profile shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <img src="{{ url_for('static', filename='images/profile_pics/' + user.profile_picture) }}" 
+                         alt="{{ user.full_name }}" 
+                         class="rounded-circle img-thumbnail mb-3" 
+                         style="width: 150px; height: 150px;">
+                    <h2 class="card-title">{{ user.full_name }}</h2>
+                    <p class="text-muted mb-1">@{{ user.username }}</p>
+                    <p class="text-muted mb-3">{{ user.role.capitalize() }}</p>
+                    <p class="card-text">{{ user.bio }}</p>
+                    <a href="{{ url_for('user.edit_profile') }}" class="btn btn-outline-primary btn-sm mt-3">
+                        Edit Profile
+                    </a>
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-primary btn-sm mt-3">
+                        Back to Dashboard
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="card card-details shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title">Contact Information</h3>
+                    <hr>
+                    <p>Email: <a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+
+                    <h3 class="card-title mt-4">Account Details</h3>
+                    <hr>
+                    <p>Member since: {{ user.created_at.strftime('%B %d, %Y') }}</p>
+                    <p>Last updated: {{ user.updated_at.strftime('%B %d, %Y') }}</p>
+
+                    <h3 class="card-title mt-4">Activity</h3>
+                    <hr>
+                    {% if user.role == 'client' %}
+                        <p>Jobs posted: <span class="badge bg-secondary">{{ user.posted_jobs|length }}</span></p>
+                    {% elif user.role == 'freelancer' %}
+                        <p>Applications submitted: <span class="badge bg-secondary">{{ user.applications|length }}</span></p>
+                        <p>Reviews received: <span class="badge bg-secondary">{{ user.reviews_received|length }}</span></p>
+                    {% endif %}
+
+                    <h3 class="card-title mt-4">Messages</h3>
+                    <hr>
+                    <p>Messages sent: <span class="badge bg-secondary">{{ user.messages_sent|length }}</span></p>
+                    <p>Messages received: <span class="badge bg-secondary">{{ user.messages_received|length }}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

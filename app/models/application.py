@@ -25,6 +25,10 @@ class Application(db.Model):
     # Relationships
     freelancer = relationship('User', foreign_keys=[freelancer_id], back_populates='applications')
     job = relationship('Job', foreign_keys=[job_id], back_populates='applications')
+    
+    __table_args__ = (
+        db.UniqueConstraint('job_id', 'freelancer_id', name='unique_application'),
+    )
 
     def __repr__(self) -> str:
         return f'<Application: {self.id}>'

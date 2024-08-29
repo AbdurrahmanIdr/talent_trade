@@ -1,61 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<h2>Register</h2>
-<form method="POST" action="{{ url_for('auth.register') }}">
-    <div class="mb-3">
-        <label for="fullname" class="form-label">Fullname:</label>
-        <input type="text" name="fullname" id="fullname" class="form-control" required pattern="[a-zA-Z_ ]{3,120}">
-        <div id="fullname-help" class="form-text">
-            Fullname must be between 3 and 120 characters long and
-            only contain alphabet characters and underscores.
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 shadow-sm mb-4 mt-4">
+            <h2 class="mb-4 text-center">Create Your Account</h2>
+            <form method="POST" action="{{ url_for('auth.register') }}">
+                <div class="mb-4">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" name="fullname" id="fullname" class="form-control" required pattern="[a-zA-Z_ ]{3,120}">
+                    <div class="form-text">Your name should be between 3 and 120 characters long, and only include letters and spaces.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                    <div class="form-text">We'll never share your email with anyone.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required pattern="[a-zA-Z0-9_]{3,80}">
+                    <div class="form-text">Username must be 3-80 characters and contain only letters, numbers, and underscores.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="role" class="form-label">Role</label>
+                    <select name="role" id="role" class="form-select" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="client">Client</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                    <div class="form-text">Your password must be at least 8 characters long, with at least one uppercase letter, one lowercase letter, and one number.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" class="form-control" required>
+                    <div class="form-text">Re-enter your password to confirm it.</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">Sign Up</button>
+            </form>
+            <div class="text-center mt-3">
+                <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a>.</p>
+            </div>
         </div>
     </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="email" name="email" id="email" class="form-control" required>
-        <div id="email-help" class="form-text">
-            We'll never share your email with anyone else.
-        </div>
-    </div>
-    <div class="mb-3">
-        <label for="username" class="form-label">Username:</label>
-        <input type="text" name="username" id="username" class="form-control" required pattern="[a-zA-Z0-9_]{3,80}">
-        <div id="username-help" class="form-text">
-            Username must be between 3 and 80 characters long and
-            only contain alphanumeric characters and underscores.
-        </div>
-    </div>
-    <div class="mb-3">
-        <label for="role" class="form-label">Role:</label>
-        <select name="role" id="role" class="form-select" required>
-            <option value="">Select Role</option>
-            <option value="freelancer">Freelancer</option>
-            <option value="client">Client</option>
-        </select>
-        <div id="role-help" class="form-text">
-            Please select your role.
-        </div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" name="password" id="password" class="form-control" required>
-        <div id="password-help" class="form-text">
-            Password must be at least 8 characters long and contain
-            at least one uppercase letter, one lowercase letter, and one number.
-        </div>
-    </div>
-    <div class="mb-3">
-        <label for="confirm-password" class="form-label">Confirm Password:</label>
-        <input type="password" name="confirm-password" id="confirm-password" class="form-control" required>
-        <div id="confirm-password-help" class="form-text">
-            Please confirm your password.
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg">Register</button>
-</form>
-<p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
-
+</div>
 {% endblock %}

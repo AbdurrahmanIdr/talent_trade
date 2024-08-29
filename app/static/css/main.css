@@ -1,75 +1,211 @@
-/* Reset some basic elements */
-body, h1, h2, h3, h4, h5, h6, p {
-    font-family: 'Open Sans', sans-serif;
-}
-
-/* Body styling */
+/* General Styling */
 body {
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+    background-color: #31393a;/* Darker cream background */
+    color: #2B1F1F; /* Darker dark brown text */
 }
 
-/* Header styling */
-header {
-    /*background-color: #333;*/
-    /*color: #fff;*/
-    /*padding: 10px 0;*/
-    /*text-align: center;*/
+/* Container */
+.container {
+    background-color:  #E5E5D4; /* Darker light gray background */
 }
 
+/* Navbar */
+.navbar {
+    background-color: #78493C; /* Darker earthy brown */
+}
 
+.navbar .navbar-brand, .navbar-nav .nav-link {
+    color: #FFA07A; /* Darker rich gold text */
+}
 
-/* Main content styling */
+.navbar .navbar-brand:hover, .navbar-nav .nav-link:hover {
+    color: #1E865F; /* Darker deep green hover */
+}
 
-/* Buttons styling */
-/*button:hover {*/
-/*    background-color: #0056b3;*/
-/*}*/
+/* Buttons */
+.btn-primary {
+    background-color: #78493C;
+    border-color: #78493C;
+}
 
-/* Footer styling */
+.btn-primary:hover {
+    background-color: #1E865F; /* Darker deep green hover */
+    border-color: #1E865F;
+}
+
+.btn-secondary {
+    background-color: #1E865F;
+    border-color: #1E865F;
+    color: #78493C;
+}
+
+.btn-secondary:hover {
+    background-color: #FFA07A; /* Darker rich gold hover */
+    border-color: #FFA07A;
+}
+
+.btn-danger {
+    background-color: #FF9900; /* Darker vibrant orange */
+    border-color: #FF9900;
+}
+
+.btn-danger:hover {
+    background-color: #FFA07A; /* Darker rich gold hover */
+    border-color: #FFA07A;
+}
+
+.btn-success {
+    background-color: #56B3FA; /* Darker light blue */
+    border-color: #56B3FA;
+}
+
+.btn-success:hover {
+    background-color: #1E865F; /* Darker deep green hover */
+    border-color: #1E865F;
+}
+
+/* Links */
+a {
+    color: #78493C; /* Darker earthy brown */
+}
+
+a:hover {
+    color: #1E865F; /* Darker deep green hover */
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: #78493C; /* Darker earthy brown for headers */
+}
+
+/* Forms */
+.form-control {
+    border-color: #78493C;
+}
+
+.form-control:focus {
+    border-color: #1E865F;
+    box-shadow: 0 0 0 0.2rem rgba(30, 134, 95, 0.25);
+}
+
+/* Footer */
 footer {
-    /*background-color: #333;*/
-    /*color: #fff;*/
-    /*padding: 10px 0;*/
-    /*text-align: center;*/
-    /*position: fixed;*/
-    /*bottom: 0;*/
-    /*width: 100%;*/
+    background-color: #78493C; /* Darker earthy brown */
+    color: #FFA07A; /* Darker rich gold */
 }
 
-.hero-div {
-    padding: 2%;
+footer a {
+    color: #FFA07A;
 }
 
-/* Profile picture styling */
-.profile-pic {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 2px solid #007BFF;
+footer a:hover {
+    color: #1E865F;
 }
 
-.job-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+/* Alerts */
+.alert-primary {
+    background-color: #78493C;
+    border-color: #78493C;
+    color: #FFA07A;
 }
 
-.job-card {
-    background: #f5f5f5;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: calc(33% - 20px);
-    margin-bottom: 20px;
+.alert-primary .alert-link {
+    color: #1E865F;
 }
 
-.job-card h3 {
-    margin-top: 0;
+#sidebarMenu {
+    background-color: #5C8B3A; /* Darker light green background */
 }
 
-.job-card p {
-    margin-bottom: 10px;
+#sidebarMenu .nav-link {
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+#sidebarMenu .nav-link:hover {
+    color: #1E865F; /* Darker deep green hover */
+}
+
+#sidebarMenu .nav-link.active {
+    background-color: #78493C; /* Darker earthy brown active background */
+    color: #FFA07A; /* Darker rich gold active text */
+}
+
+.card-job-listings {
+    background-color: #F5C4B5; /* Darker soft orange background */
+}
+
+.card-my-applications {
+    background-color: #56B3FA; /* Darker light blue background */
+}
+
+.card-messages {
+    background-color: #FF9900; /* Darker vibrant orange background */
+}
+
+
+/* If text color needs to be set for the card content */
+.text-dark {
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Buttons */
+.btn-outline-primary {
+    color: #78493C; /* Darker earthy brown */
+    border-color: #78493C;
+}
+
+.btn-outline-primary:hover {
+    color: #1E865F; /* Darker deep green */
+    border-color: #1E865F;
+}
+
+/* Links */
+a.text-primary {
+    color: #1E865F; /* Darker deep green */
+}
+
+a.text-primary:hover {
+    color: #78493C; /* Darker earthy brown */
+}
+/* Profile Card */
+.card-profile {
+    background-color: #C6E2B5; /* Pastel green background */
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Details Card */
+.card-details {
+    background-color: #F5C4B5; /* Darker soft orange background */
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Card Header */
+.card-title {
+    color: #78493C; /* Darker earthy brown for titles */
+}
+.card-text {
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Badge */
+.badge.bg-secondary {
+    background-color: #FF9900; /* Darker vibrant orange background */
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Badge */
+.badge.bg-info {
+    background-color: #C6E2B5; /* Pastel green background */
+    color: #2B1F1F; /* Darker dark brown text */
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    color: #78493C; /* Darker earthy brown */
+    border-color: #78493C;
+}
+
+.btn-outline-primary:hover {
+    color: #1E865F; /* Darker deep green */
+    border-color: #1E865F;
 }

@@ -1,6 +1,9 @@
 from flask import (
     Blueprint, render_template, redirect,
-    url_for, flash, request, session)
+    url_for, flash, request)
+from flask_login import login_user, login_required, logout_user, current_user
+
+from app.models.user import User
 
 from app.services import AuthService
 
@@ -9,6 +12,9 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.dashboard'))
+    
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -16,13 +22,15 @@ def login():
         response, status = AuthService.login_user(email, password)
         match status:
             case 200:
+                user_id = response.get('user_id')
+                user = User.query.get(int(user_id))
+                login_user(user)
                 flash(
                     response.get('message', 'Login successful!'),
                     'success')
-                session['user_id'] = response.get('user_id')
-                return redirect(url_for('user.profile'))
+                return redirect(url_for('main.dashboard'))
             case 400:
-                flash(response.get('error'), 'error')
+                flash(response.get('error'), 'danger')
             case _:
                 flash('Login failed. Check your email and password.', 'danger')
 
@@ -31,6 +39,9 @@ def login():
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.dashboard'))
+    
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
@@ -65,7 +76,8 @@ def register():
 
 
 @auth_bp.route('/logout')
+@login_required
 def logout():
-    # Implement logout logic here
+    logout_user()    
     flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))

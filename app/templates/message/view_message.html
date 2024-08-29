@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Message - TalentTrade
+{% endblock %}
+
+{% block content %}
+<!-- Main Content Section -->
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5>Message from {{ message.sender.username }}</h5>
+            <p class="text-muted">{{ message.sent_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        </div>
+        <div class="card-body">
+            <p>{{ message.content }}</p>
+        </div>
+        <div class="card-footer text-end">
+            <a href="{{ url_for('message.reply', message_id=message.id) }}" class="btn btn-primary">Reply</a>
+            <a href="{{ url_for('message.inbox') }}" class="btn btn-secondary">Back to Inbox</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Inbox</h2>
+    <div class="list-group">
+        {% for conversation in conversations %}
+            <a href="{{ url_for('message.chat', other_user_id=conversation.user.id) }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ conversation.user.username }}</h5>
+                    <small>{{ conversation.last_message.sent_at.strftime('%b %d, %Y %H:%M') }}</small>
+                </div>
+                <p class="mb-1">{{ conversation.last_message.content|truncate(100) }}</p>
+            </a>
+        {% else %}
+            <p class="text-center">No conversations found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
